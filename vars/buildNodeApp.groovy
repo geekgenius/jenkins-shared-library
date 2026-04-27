@@ -20,11 +20,6 @@ def call(Map config = [:]) {
         stages {
             stage('Install') {
                 steps {
-                    script {
-                        def jobName = env.JOB_NAME.split('/')[0]
-                        def blueOceanUrl = "${env.JENKINS_URL}blue/organizations/jenkins/${jobName}/detail/${env.JOB_BASE_NAME}/${env.BUILD_NUMBER}/pipeline"
-                        currentBuild.description = "<a href='${blueOceanUrl}'>🔵 Blue Ocean</a>"
-                    }
                     sh 'npm install'
                 }
             }
