@@ -59,7 +59,15 @@ def call(Map config = [:]) {
                 echo "❌ Pipeline failed on branch: ${env.BRANCH_NAME} — check Console Output"
             }
             always {
-                cleanWs(patterns: [[pattern: 'dist/**', type: 'INCLUDE']])
+                cleanWs(patterns: [
+                    [pattern: 'dist/**', type: 'INCLUDE'],
+                    [pattern: 'src/**', type: 'INCLUDE'],
+                    [pattern: '*.ts', type: 'INCLUDE'],
+                    [pattern: '*.html', type: 'INCLUDE'],
+                    [pattern: '*.json', type: 'INCLUDE'],
+                    [pattern: '*.toml', type: 'INCLUDE'],
+                    [pattern: '.git/**', type: 'INCLUDE']
+                ])
             }
         }
     }
