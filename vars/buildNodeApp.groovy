@@ -10,6 +10,10 @@ def call(Map config = [:]) {
             buildDiscarder(logRotator(numToKeepStr: '10'))
         }
 
+        triggers {
+            cron('H 2 * * *')
+        }
+
         environment {
             PATH               = "/usr/bin:/usr/local/bin:${env.PATH}"
             NETLIFY_AUTH_TOKEN = credentials('netlify-auth-token')
